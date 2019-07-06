@@ -210,11 +210,11 @@ ___
   "&#x1F4DC; The incantations that await_ipv4_address function understands"
 
 
-- `_interface` **required** example `eth0` or `wlan0`, the interface name to wait for an IP address to be active on
+1. `_interface` **required** example `eth0` or `wlan0`, the interface name to wait for an IP address to be active on
 
-- `_sleep_interval` **defaults to** `1`, the number of seconds to sleep between checking if `_interface` has an IP address
+2. `_sleep_interval` **defaults to** `1`, the number of seconds to sleep between checking if `_interface` has an IP address
 
-- `_loop_limit` **defaults to** `10`, the number of iterations to wait till exiting without any IP address
+3. `_loop_limit` **defaults to** `10`, the number of iterations to wait till exiting without any IP address
 
 
 ___

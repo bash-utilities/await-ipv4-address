@@ -49,4 +49,4 @@ branches:
 before_install: true
 install: true
 script:
-  - bash example-usage.sh
+  - bash example-usage.sh || echo 'Success testing failure!'

@@ -1,0 +1,4 @@
+[submodule "await-ipv4-address"]
+	path = modules/await-ipv4-address
+	url = https://github.com/bash-utilities/await-ipv4-address.git
+	branch = master

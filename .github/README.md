@@ -4,6 +4,16 @@
   "&#x2B06; Top of this page"
 
 
+[`await-ipv4-address.sh`][await_ipv4_address__master__source_code], contains a function that returns listening ports for a given service, even if it has to wait a few seconds, and even if the listening ports are not known in advance; such as in the case with `librespot` service.
+
+
+> The following covers how to install this branch as a submodule within your own project, and parameters that `await-ipv4-address.sh` currently responds to.
+
+
+## [![Byte size of await-ipv4-address.sh][badge__master__await_ipv4_address__source_code]][await_ipv4_address__master__source_code] [![Open Issues][badge__issues__await_ipv4_address]][issues__await_ipv4_address] [![Open Pull Requests][badge__pull_requests__await_ipv4_address]][pull_requests__await_ipv4_address] [![Build Test Status][badge__travis_ci__await_ipv4_address]][travis_ci__await_ipv4_address] [![Latest commits][badge__commits__await_ipv4_address__master]][commits__await_ipv4_address__master]
+
+
+
 ------
 
 
@@ -18,7 +28,7 @@
   - [&#x1F578; Example Bash Script][heading__example_bash_script]
   - [:floppy_disk: Commit and Push][heading__commit_and_push]
 
-- [:scroll: await_ipv4_address.sh Positional Arguments][heading__api]
+- [:scroll: await-ipv4-address.sh Positional Arguments][heading__api]
 
 - [&#x1F5D2; Notes][notes]
 
@@ -80,7 +90,7 @@ git checkout tags/v0.0.1 -b loc-v0.0.1
   "&#x1F4DD; Suggested additions so everyone has a good time with submodules"
 
 
-**Quick Start Section**
+Suggested additions so everyone has a good time with submodules
 
 
 ```MarkDown
@@ -119,7 +129,7 @@ Please review the official documentation for Git submodules...
   "&#x1F578; Source and utilize await_ipv4_address features"
 
 
-**`example.sh`**
+[**`example-usage.sh`**][branch_example__example_usage]
 
 
 ```Bash
@@ -131,32 +141,36 @@ __SOURCE__="${BASH_SOURCE[0]}"
 while [[ -h "${__SOURCE__}" ]]; do
     __SOURCE__="$(find "${__SOURCE__}" -type l -ls | sed -n 's@^.* -> \(.*\)@\1@p')"
 done
-__PARENT__="$(cd -P $(dirname "${__SOURCE__}") && pwd)"
-__NAME__="${__SOURCE__##*/}"
-__PATH__="${__PARENT__}/${__NAME__}"
+__DIR__="$(cd -P "$(dirname "${__SOURCE__}")" && pwd)"
 
 
-source "${__PARENT__}/await_ipv4_address.sh"
+source "${__DIR__}/modules/await-ipv4-address/await-ipv4-address.sh"
 
 
-## Waits up-to one minuet for an IP on eth0 interface before
-##  doing something network related with it or exiting with error
-_assigned_ip="$(await_ipv4_address 'eth0' '3' '19')"
+## Lists iptables rules targeting IP, waits up-to seven seconds for an IP on eth0 interface
+something_networky(){
+    local _assigned_ips=($(await_ipv4_address 'eth0' '1' '6'))
+    if [ -z "${_assigned_ips}" ]; then
+        printf '%s got board of waiting for an IP\n' "${FUNCNAME[0]}"
+        return 1
+    fi
 
-if [ -z "${_assigned_ip}" ]; then
-    printf '%s got board of waiting for an IP\n' "${__NAME__}"
-    exit 1
-fi
-printf 'Listing any iptables rules for -> %s\n' "${_assigned_ip%/*}"
-iptables -S | grep -- "${_assigned_ip%/*}"
+    for _assigned_ip in "${_assigned_ips[@]}"; do
+        printf 'Listing any iptables rules for -> %s\n' "${_assigned_ip%/*}"
+        iptables -S | grep -- "${_assigned_ip%/*}"
+    done
+}
+
+
+something_networky
 ```
 
 
-**Testing `example.sh`**
+**Testing `example-usage.sh`**
 
 
 ```Bash
-bash example.sh || echo "Exit code -> ${?}"
+bash example-usage.sh || echo "Exit code -> ${?}"
 ```
 
 
@@ -204,17 +218,46 @@ git push origin gh-pages
 ___
 
 
-## Await IPv4 Address Positional Arguments
+## Await IPv4 Address API
 [heading__api]:
-  #await-ipv4-address-positional-arguments
+  #await-ipv4-address-api
   "&#x1F4DC; The incantations that await_ipv4_address function understands"
 
 
-1. `_interface` **required** example `eth0` or `wlan0`, the interface name to wait for an IP address to be active on
+| Param | Type |  | Description |
+|---|---|---|---|
+| `$1` | string | **required** | example `eth0` or `wlan0`, the interface name to wait for an IP address to be active on |
+| `$2` | number | `1` | Number of seconds to sleep between checks |
+| `$3` | number | `10` | Max number of loops before function fails silently |
 
-2. `_sleep_interval` **defaults to** `1`, the number of seconds to sleep between checking if `_interface` has an IP address
 
-3. `_loop_limit` **defaults to** `10`, the number of iterations to wait till exiting without any IP address
+**Returns: `<address|list>`**, IP address or space separated list of addresses
+
+
+**Throws** `Parameter_Error: await_ipv4_address not provided an interface`, when first parameter is not defined
+
+
+**Example:** as an array
+
+
+```Bash
+_ip_addresses_list=($(await_service_port 'sshd'))
+
+printf 'Listening address: %s\n' "${_ip_addresses_list[@]}"
+#> Listening address: 192.168.0.2
+#> Listening address: 192.168.0.4
+```
+
+
+**Example:** as a string
+
+
+```Bash
+_ip_addresses_string="$(await_service_port 'sshd')"
+
+printf 'Listening address(es): %s\n' "${_ip_addresses_string}"
+#> Listening address(es): 192.168.0.2 192.168.0.4
+```
 
 
 ___
@@ -226,7 +269,7 @@ ___
   "&#x1F5D2; Additional notes and links that may be worth clicking in the future"
 
 
-Pull Requests are welcomed! Check the `gh-pages` branch and _`Community`_ section for development tips and code of conduct.
+Pull Requests are welcomed! Check the _`Community`_ section for development tips and code of conduct.
 
 
 ___
@@ -266,3 +309,59 @@ GNU Affero General Public License for more details.
 You should have received a copy of the GNU Affero General Public License
 along with this program.  If not, see <https://www.gnu.org/licenses/>.
 ```
+
+
+
+[badge__travis_ci__await_ipv4_address]:
+  https://img.shields.io/travis/bash-utilities/await-ipv4-address/example.svg
+
+[travis_ci__await_ipv4_address]:
+  https://travis-ci.com/bash-utilities/await-ipv4-address
+  "&#x1F6E0; Automated tests and build logs"
+
+
+[branch_example__example_usage]:
+  https://github.com/bash-utilities/await-ipv4-address/blob/example/example-usage.sh
+  "Bash script that shows some ways of utilizing code from the master branch of this repository"
+
+
+[badge__commits__await_ipv4_address__master]:
+  https://img.shields.io/github/last-commit/bash-utilities/await-ipv4-address/master.svg
+
+[commits__await_ipv4_address__master]:
+  https://github.com/bash-utilities/await-ipv4-address/commits/master
+  "&#x1F4DD; History of changes on this branch"
+
+
+[await_ipv4_address__community]:
+  https://github.com/bash-utilities/await-ipv4-address/community
+  "&#x1F331; Dedicated to functioning code"
+
+
+[await_ipv4_address__example_branch]:
+  https://github.com/bash-utilities/await-ipv4-address/tree/example
+  "If it lurches, it lives"
+
+
+[badge__issues__await_ipv4_address]:
+  https://img.shields.io/github/issues/bash-utilities/await-ipv4-address.svg
+
+[issues__await_ipv4_address]:
+  https://github.com/bash-utilities/await-ipv4-address/issues
+  "&#x2622; Search for and _bump_ existing issues or open new issues for project maintainer to address."
+
+
+[badge__pull_requests__await_ipv4_address]:
+  https://img.shields.io/github/issues-pr/bash-utilities/await-ipv4-address.svg
+
+[pull_requests__await_ipv4_address]:
+  https://github.com/bash-utilities/await-ipv4-address/pulls
+  "&#x1F3D7; Pull Request friendly, though please check the Community guidelines"
+
+
+[badge__master__await_ipv4_address__source_code]:
+  https://img.shields.io/github/size/bash-utilities/await-ipv4-address/await-ipv4-address.sh.svg?label=await-ipv4-address.sh
+
+[await_ipv4_address__master__source_code]:
+  https://github.com/bash-utilities/await-ipv4-address/blob/master/await-ipv4-address.sh
+  "&#x2328; Project source code!"

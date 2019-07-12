@@ -241,7 +241,7 @@ ___
 
 
 ```Bash
-_ip_addresses_list=($(await_service_port 'sshd'))
+_ip_addresses_list=($(await_ipv4_address 'eth0'))
 
 printf 'Listening address: %s\n' "${_ip_addresses_list[@]}"
 #> Listening address: 192.168.0.2
@@ -253,7 +253,7 @@ printf 'Listening address: %s\n' "${_ip_addresses_list[@]}"
 
 
 ```Bash
-_ip_addresses_string="$(await_service_port 'sshd')"
+_ip_addresses_string="$(await_ipv4_address 'eth0')"
 
 printf 'Listening address(es): %s\n' "${_ip_addresses_string}"
 #> Listening address(es): 192.168.0.2 192.168.0.4

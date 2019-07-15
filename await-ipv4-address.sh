@@ -30,9 +30,9 @@ await_ipv4_address(){
     local _loop_count='0'
     local -a _ipv4_addresses
     while true; do
-        for _address in $({ ip addr show ${_interface} | awk '/inet /{print $2}'; } 2>/dev/null); do
+        while IFS= read -r _address; do
             _ipv4_addresses+=("${_address}")
-        done
+        done <<<"$({ ip addr show ${_interface} | awk '/inet /{print $2}'; } 2>/dev/null)"
 
         if [ "${#_ipv4_addresses[@]}" -gt '0' ]; then
             printf '%s\n' "${_ipv4_addresses[*]}"

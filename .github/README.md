@@ -25,7 +25,7 @@
 - [:zap: Quick Start][heading__quick_start]
 
   - [:memo: Edit Your ReadMe File][heading__edit_your_readme_file]
-  - [&#x1F578; Example Bash Script][heading__example_bash_script]
+  - [:shell: Example Bash Script][heading__example_bash_script]
   - [:floppy_disk: Commit and Push][heading__commit_and_push]
 
 - [:scroll: await-ipv4-address.sh Positional Arguments][heading__api]
@@ -97,7 +97,6 @@ Suggested additions so everyone has a good time with submodules
 Clone with the following to avoid incomplete downloads
 
 
-
     git clone --recurse-submodules <url-for-your-project>
 
 
@@ -126,7 +125,7 @@ Please review the official documentation for Git submodules...
 ### Example Bash Script
 [heading__example_bash_script]:
   #example-bash-script
-  "&#x1F578; Source and utilize await_ipv4_address features"
+  "&#x1F41A; Source and utilize await_ipv4_address features"
 
 
 [**`example-usage.sh`**][branch_example__example_usage]
@@ -194,7 +193,9 @@ git commit -F- <<'EOF'
 :heavy_plus_sign: Adds bash-utilities/await-ipv4-address dependency
 
 
+
 **Additions**
+
 
 - `.gitmodules` file, tracks other Git repository code utilized by this project
 

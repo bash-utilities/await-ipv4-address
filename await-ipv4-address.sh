@@ -31,6 +31,7 @@ await_ipv4_address(){
     local -a _ipv4_addresses
     while true; do
         while IFS= read -r _address; do
+            [[ -n "${_address}" ]] || continue
             _ipv4_addresses+=("${_address}")
         done <<<"$({ ip addr show ${_interface} | awk '/inet /{print $2}'; } 2>/dev/null)"
 

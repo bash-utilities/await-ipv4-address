@@ -85,43 +85,43 @@ along with this program.  If not, see <https://www.gnu.org/licenses/>.
 ```
 
 
-[master_branch]: https://github.com/bash-utilities/await-ipv4-address
+[master_branch]: https://github.com/network-utilities/await-ipv4-address
 
-[branch_master__await_ipv4_address]: https://github.com/bash-utilities/await-ipv4-address/blob/master/await-ipv4-address.sh
+[branch_master__await_ipv4_address]: https://github.com/network-utilities/await-ipv4-address/blob/master/await-ipv4-address.sh
 
 
 [branch_example__example_usage]:
-  https://github.com/bash-utilities/await-ipv4-address/blob/example/example-usage.sh
+  https://github.com/network-utilities/await-ipv4-address/blob/example/example-usage.sh
   "Bash script that shows some ways of utilizing code from the master branch of this repository"
 
 
 [badge__travis_ci__await_ipv4_address]:
-  https://img.shields.io/travis/bash-utilities/await-ipv4-address/example.svg
+  https://img.shields.io/travis/network-utilities/await-ipv4-address/example.svg
 
 [travis_ci__await_ipv4_address]:
-  https://travis-ci.com/bash-utilities/await-ipv4-address
+  https://travis-ci.com/network-utilities/await-ipv4-address
   "&#x1F6E0; Automated tests and build logs"
 
 
 [badge__commits__await_ipv4_address__example]:
-  https://img.shields.io/github/last-commit/bash-utilities/await-ipv4-address/example.svg
+  https://img.shields.io/github/last-commit/network-utilities/await-ipv4-address/example.svg
 
 [commits__await_ipv4_address__example]:
-  https://github.com/bash-utilities/await-ipv4-address/commits/example
+  https://github.com/network-utilities/await-ipv4-address/commits/example
   "&#x1F4DD; History of changes on this branch"
 
 
 [badge__issues__await_ipv4_address]:
-  https://img.shields.io/github/issues/bash-utilities/await-ipv4-address.svg
+  https://img.shields.io/github/issues/network-utilities/await-ipv4-address.svg
 
 [issues__await_ipv4_address]:
-  https://github.com/bash-utilities/await-ipv4-address/issues
+  https://github.com/network-utilities/await-ipv4-address/issues
   "&#x2622; Search for and _bump_ existing issues or open new issues for project maintainer to address."
 
 
 [badge__pull_requests__await_ipv4_address]:
-  https://img.shields.io/github/issues-pr/bash-utilities/await-ipv4-address.svg
+  https://img.shields.io/github/issues-pr/network-utilities/await-ipv4-address.svg
 
 [pull_requests__await_ipv4_address]:
-  https://github.com/bash-utilities/await-ipv4-address/pulls
+  https://github.com/network-utilities/await-ipv4-address/pulls
   "&#x1F3D7; Pull Request friendly, though please check the Community guidelines"

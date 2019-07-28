@@ -50,7 +50,7 @@
 
 
 ```Bash
-_module_https_url='https://github.com/bash-utilities/await-ipv4-address.git'
+_module_https_url='https://github.com/network-utilities/await-ipv4-address.git'
 _module_relative_path='lib/modules/await-ipv4-address'
 ```
 
@@ -191,7 +191,7 @@ git add README.md
 
 
 git commit -F- <<'EOF'
-:heavy_plus_sign: Adds bash-utilities/await-ipv4-address dependency
+:heavy_plus_sign: Adds network-utilities/await-ipv4-address dependency
 
 
 **Additions**
@@ -313,55 +313,55 @@ along with this program.  If not, see <https://www.gnu.org/licenses/>.
 
 
 [badge__travis_ci__await_ipv4_address]:
-  https://img.shields.io/travis/bash-utilities/await-ipv4-address/example.svg
+  https://img.shields.io/travis/network-utilities/await-ipv4-address/example.svg
 
 [travis_ci__await_ipv4_address]:
-  https://travis-ci.com/bash-utilities/await-ipv4-address
+  https://travis-ci.com/network-utilities/await-ipv4-address
   "&#x1F6E0; Automated tests and build logs"
 
 
 [branch_example__example_usage]:
-  https://github.com/bash-utilities/await-ipv4-address/blob/example/example-usage.sh
+  https://github.com/network-utilities/await-ipv4-address/blob/example/example-usage.sh
   "Bash script that shows some ways of utilizing code from the master branch of this repository"
 
 
 [badge__commits__await_ipv4_address__master]:
-  https://img.shields.io/github/last-commit/bash-utilities/await-ipv4-address/master.svg
+  https://img.shields.io/github/last-commit/network-utilities/await-ipv4-address/master.svg
 
 [commits__await_ipv4_address__master]:
-  https://github.com/bash-utilities/await-ipv4-address/commits/master
+  https://github.com/network-utilities/await-ipv4-address/commits/master
   "&#x1F4DD; History of changes on this branch"
 
 
 [await_ipv4_address__community]:
-  https://github.com/bash-utilities/await-ipv4-address/community
+  https://github.com/network-utilities/await-ipv4-address/community
   "&#x1F331; Dedicated to functioning code"
 
 
 [await_ipv4_address__example_branch]:
-  https://github.com/bash-utilities/await-ipv4-address/tree/example
+  https://github.com/network-utilities/await-ipv4-address/tree/example
   "If it lurches, it lives"
 
 
 [badge__issues__await_ipv4_address]:
-  https://img.shields.io/github/issues/bash-utilities/await-ipv4-address.svg
+  https://img.shields.io/github/issues/network-utilities/await-ipv4-address.svg
 
 [issues__await_ipv4_address]:
-  https://github.com/bash-utilities/await-ipv4-address/issues
+  https://github.com/network-utilities/await-ipv4-address/issues
   "&#x2622; Search for and _bump_ existing issues or open new issues for project maintainer to address."
 
 
 [badge__pull_requests__await_ipv4_address]:
-  https://img.shields.io/github/issues-pr/bash-utilities/await-ipv4-address.svg
+  https://img.shields.io/github/issues-pr/network-utilities/await-ipv4-address.svg
 
 [pull_requests__await_ipv4_address]:
-  https://github.com/bash-utilities/await-ipv4-address/pulls
+  https://github.com/network-utilities/await-ipv4-address/pulls
   "&#x1F3D7; Pull Request friendly, though please check the Community guidelines"
 
 
 [badge__master__await_ipv4_address__source_code]:
-  https://img.shields.io/github/size/bash-utilities/await-ipv4-address/await-ipv4-address.sh.svg?label=await-ipv4-address.sh
+  https://img.shields.io/github/size/network-utilities/await-ipv4-address/await-ipv4-address.sh.svg?label=await-ipv4-address.sh
 
 [await_ipv4_address__master__source_code]:
-  https://github.com/bash-utilities/await-ipv4-address/blob/master/await-ipv4-address.sh
+  https://github.com/network-utilities/await-ipv4-address/blob/master/await-ipv4-address.sh
   "&#x2328; Project source code!"

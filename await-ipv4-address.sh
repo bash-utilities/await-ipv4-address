@@ -22,7 +22,7 @@ await_ipv4_address(){
     local _sleep_interval="${2:-1}"
     local _loop_limit="${3:-10}"
 
-    if [ "${_sleep_interval}" -lt '0' ] || [ "${_loop_limit}" -le '0' ]; then
+    if [ "${_sleep_interval}" -le '0' ] || [ "${_loop_limit}" -le '0' ]; then
         printf 'Parameter_Error: %s requires positive numbers for second and third parameters\n' "${FUNCNAME[0]}" >&2
         return 1
     fi
